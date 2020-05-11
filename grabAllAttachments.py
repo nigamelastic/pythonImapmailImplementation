@@ -9,7 +9,7 @@ email_pass = input('Password: ')
 mail = imaplib.IMAP4_SSL("<Server Name>")
 
 attachmentLocation=r'<place where u need to keep ur attachments>'
-searchQuery = '(FROM "<the sender>")' #this can be changed to suject too
+searchQuery = '(FROM "<the sender>" SUBJECT "<partial subject>" )' #this can be changed to suject too
 mailfolderName='inbox'
 #mailfolderName='pymailtest'
 
