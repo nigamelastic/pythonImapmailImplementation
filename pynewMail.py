@@ -74,9 +74,18 @@ def getMAil():
 
         # converts byte literal to string removing b''
         #raw_email_string = raw_email.decode('utf-8')
-    email_message = email.message_from_bytes(raw_email)
-        #keyValue=email_message
-    
+   
+    email_msg = email.message_from_bytes(raw_email)
+    maintype = email_msg.get_content_maintype()
+    if maintype == 'multipart':
+        for part in email_msg.get_payload():
+            if part.get_content_maintype() == 'text':
+                print(part.get_payload())
+    elif maintype == 'text':
+        print(email_msg.get_payload())
+        
+        
+        
     print(email_message['subject'])
     print(email_message['date'])
     print(email_message['from'])
